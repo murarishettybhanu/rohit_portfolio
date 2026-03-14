@@ -20,7 +20,7 @@ function Layout({ children }) {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/rohit_portfolio/">
       <Routes>
         <Route path="/" element={<Layout><Home /></Layout>} />
         <Route path="/case-study/honc" element={<Layout><HoncCaseStudy /></Layout>} />

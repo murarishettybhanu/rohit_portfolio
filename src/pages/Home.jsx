@@ -16,6 +16,15 @@ import { BsLightningCharge } from 'react-icons/bs'
 import { FiFigma } from 'react-icons/fi'
 import './Home.css'
 
+import rkPortrait from '../assets/rk.png'
+import quoteImg from '../assets/quote.png'
+import iconGroup27 from '../assets/Group 27.png'
+import iconGroup28 from '../assets/Group 28.png'
+import iconGroup29 from '../assets/Group 29.png'
+import iconGroup30 from '../assets/Group 30.png'
+import honcMockup from '../assets/Image Container.png'
+
+
 const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: (i = 0) => ({
@@ -56,10 +65,10 @@ const caseStudies = [
                 color: '#c7a4ff'
             }
         ],
-        mockupImg: 'http://localhost:3845/assets/ee736a6e3581870bee612ea82e6d75a9a0e058af.png',
+        mockupImg: honcMockup,
         notifIcon: 'http://localhost:3845/assets/751768832a764a780ade6593539077ee595ac868.png',
-        notifTitle: 'Good Morning Ram,',
-        notifSub: 'Your Ford Endeavour is Cleaned Today'
+        notifTitle: '',
+        notifSub: ''
     },
     {
         id: 'doorpe',
@@ -231,6 +240,13 @@ export default function Home() {
                             </a>
                         </div>
                     </motion.div>
+
+                    {/* Scroll Indicator */}
+                    <div className="scroll-indicator">
+                        <div className="scroll-mouse">
+                            <div className="scroll-wheel"></div>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Ticker Section */}
@@ -334,38 +350,8 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Other Works Section */}
-            <section className="other-works-section">
-                <div className="container">
-                    <h2 className="section-title-medium">OTHER WORKS</h2>
-                    <div className="other-works-carousel">
-                        <div className="other-work-item">
-                            <div className="work-image-container">
-                                <img src="http://localhost:3845/assets/c7595a67e2b51532a0f44ebbbd5cc7d337350ee7.png" alt="Transforming Spaces" />
-                                <div className="work-overlay">
-                                    <h3>TRANSFORMING SPACES INSPIRING MOVEMENT</h3>
-                                    <button className="btn-visit">visit website ✦</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="other-work-item">
-                            <div className="work-image-container">
-                                <img src="http://localhost:3845/assets/5ce8a13172d65297905bc7890eb79fea7f1395e6.png" alt="Coke Commercial" />
-                                <div className="work-overlay">
-                                    <h3>COKE COMMERCIAL REIMAGINED</h3>
-                                    <button className="btn-visit">visit website ✦</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* Carousel Indicators */}
-                    <div className="carousel-indicators">
-                        <span className="dot dot--active"></span>
-                        <span className="dot"></span>
-                    </div>
-                </div>
-            </section>
-
+            <hr className="section-divider" />
+            
             {/* Second Ticker Section */}
             <div className="ticker-wrapper ticker-wrapper--bottom">
                 <div className="ticker-bar">
@@ -384,67 +370,72 @@ export default function Home() {
                     <img src="http://localhost:3845/assets/2912fb5d438065f3fd17455b2310ebcffb9e4258.svg" alt="" />
                 </div>
                 <div className="container">
-                    <h2 className="section-title-large section-title-center">ABOUT</h2>
-                    
-                    <div className="about-grid">
-                        <div className="about-portrait">
+                    <div className="about-header-grid">
+                        <div className="about-portrait-col">
                             <div className="portrait-wrapper">
-                                <img src="http://localhost:3845/assets/52211a11a37806b3527981a6a0b232bdf7c1b86b.png" alt="Rohit Sri Kumar" className="portrait-img" />
+                                <img src={rkPortrait} alt="Rohit Sri Kumar" className="portrait-img" />
                                 <div className="portrait-glow"></div>
+                                <button className="btn-resume-overlay">Download Resume ↓</button>
                             </div>
-                            <button className="btn-resume">Download Resume ↓</button>
                         </div>
 
-                        <div className="about-content">
-                            <h3 className="about-name">Rohit Sri Kumar</h3>
-                            <span className="about-job-title">Product • UI UX Designer</span>
-                            
-                            <div className="about-socials">
-                                <a href="#"><FaLinkedin /></a>
-                                <a href="#"><FaFigma /></a>
-                                <a href="#"><FaDribbble /></a>
-                                <a href="#"><FaLinkedin /></a> {/* Mocking extra social icons */}
+                        <div className="about-info-col">
+                            <h1 className="about-name-large">Rohit Sri Kumar</h1>
+                            <div className="about-subtitle">
+                                Product <span className="subtitle-diamond">✦</span> UI UX Designer
+                            </div>
+                            <div className="about-divider"></div>
+
+                            <div className="software-badges">
+                                <div className="software-badge badge-ps">Ps</div>
+                                <div className="software-badge badge-ai">Ai</div>
+                                <div className="software-badge badge-id">Id</div>
+                                <div className="software-badge badge-spacing"></div>
+                                <div className="software-badge badge-pr">Pr</div>
+                                <div className="software-badge badge-ae">Ae</div>
+                                <div className="software-badge badge-spacing"></div>
+                                <div className="software-badge badge-figma"><FiFigma /></div>
+                                <div className="software-badge badge-xd">Xd</div>
                             </div>
 
-                            <p className="about-bio">
-                                Product & UI UX Designer with a background in graphic design and hands-on experience in building service platforms. Skilled in combining visual design principles with product thinking to create intuitive, scalable, and operationally efficient digital experiences.
+                            <p className="about-bio-text">
+                                Product & UI/UX Designer with a background in graphic design and hands-on experience in building service platforms. Skilled in combining visual design principles with product thinking to create intuitive, scalable, and operationally efficient digital experiences.
                             </p>
 
-                            <div className="about-motto">
-                                <span className="motto-dot"></span>
-                                <p>From designing visuals to designing systems - my work evolves from aesthetics to solving real operational problems.</p>
+                            <div className="motto-box">
+                                <p>From designing visuals to designing systems — my work evolved from aesthetics to solving real operational problems.</p>
                             </div>
+                        </div>
+                    </div>
 
-                            <div className="skills-grid">
-                                <div className="skill-card">
-                                    <div className="skill-icon"><RiLayoutTopLine /></div>
-                                    <div className="skill-info">
-                                        <h4>Visual Strengths</h4>
-                                        <p>Strong foundations in visual design principles like color, typography, and hierarchy. My designs are not only functional but also aesthetically refined.</p>
-                                    </div>
-                                </div>
-                                <div className="skill-card">
-                                    <div className="skill-icon"><RiFocus3Line /></div>
-                                    <div className="skill-info">
-                                        <h4>Problem Solving (UX Thinking)</h4>
-                                        <p>Skilled in framework design through user research, journey mapping, and creating intuitive flow for complex systems.</p>
-                                    </div>
-                                </div>
-                                <div className="skill-card">
-                                    <div className="skill-icon"><RiUserLine /></div>
-                                    <div className="skill-info">
-                                        <h4>Systems & Product Thinking</h4>
-                                        <p>Aptitude to design beyond a screen by understanding foundations of gig work, business goals, and operational workflows to create scalable and efficient solutions.</p>
-                                    </div>
-                                </div>
-                                <div className="skill-card">
-                                    <div className="skill-icon"><RiTeamLine /></div>
-                                    <div className="skill-info">
-                                        <h4>Founder Edge</h4>
-                                        <p>I have an explorer mentality and business sense, building platforms, creating designs, and managing operations with minimal resources and professional execution.</p>
-                                    </div>
-                                </div>
+                    <div className="skills-grid-new">
+                        <div className="skill-card-new">
+                            <div className="skill-card-header">
+                                <div className="skill-icon-badge"><img src={iconGroup28} alt="" /></div>
+                                <h4>Visual Strength</h4>
                             </div>
+                            <p>Strong foundation in visual design with a deep understanding of layout, typography, color, and visual hierarchy—ensuring interfaces are not only functional but also aesthetically refined.</p>
+                        </div>
+                        <div className="skill-card-new">
+                            <div className="skill-card-header">
+                                <div className="skill-icon-badge"><img src={iconGroup29} alt="" /></div>
+                                <h4>Problem Solving (UX Thinking)</h4>
+                            </div>
+                            <p>Evolved from visual design into user experience design, focusing on identifying user pain points, simplifying workflows, and creating intuitive, user-centered solutions.</p>
+                        </div>
+                        <div className="skill-card-new">
+                            <div className="skill-card-header">
+                                <div className="skill-icon-badge"><img src={iconGroup27} alt="" /></div>
+                                <h4>Systems & Product Thinking</h4>
+                            </div>
+                            <p>Ability to design beyond screens by understanding how products function as complete systems—balancing user needs, business goals, and operational workflows to create scalable and efficient solutions.</p>
+                        </div>
+                        <div className="skill-card-new">
+                            <div className="skill-card-header">
+                                <div className="skill-icon-badge"><img src={iconGroup30} alt="" /></div>
+                                <h4>Founder Edge</h4>
+                            </div>
+                            <p>Hands-on experience building and operating service platforms, enabling design decisions grounded in real-world constraints, scalability, and practical execution.</p>
                         </div>
                     </div>
                 </div>
@@ -462,14 +453,16 @@ export default function Home() {
                 
                 <div className="container">
                     <div className="philosophy-quote-wrapper">
-                        <HiOutlinePlus className="philosophy-plus" />
-                        <h2 className="philosophy-quote">
-                            Design is like finding "x" in math,<br />
-                            UX defines the step-by-step path to "x",<br />
-                            Product design ensures that path is clear, simple, and effortless for the user.
-                        </h2>
+                        <div className="philosophy-quote-content">
+                            <HiOutlinePlus className="philosophy-plus" />
+                            <h2 className="philosophy-quote">
+                                <span className="philosophy-line-1">Design is like finding "x" in math,</span><br />
+                                <span className="philosophy-line-2">UX defines the step-by-step path to "x",</span><br />
+                                <span className="philosophy-line-3">Product design ensures that path is clear,<br />simple, and effortless for the user.</span>
+                            </h2>
+                        </div>
                         <div className="quote-icon-wrapper">
-                            <img src="http://localhost:3845/assets/e181834a9b43fee85a748eddb7e55e2df03aba98.svg" alt="quote" className="quote-icon-large" />
+                            <img src={quoteImg} alt="quote" className="quote-icon-large" />
                         </div>
                     </div>
                 </div>

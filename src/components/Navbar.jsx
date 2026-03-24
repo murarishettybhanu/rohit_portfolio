@@ -10,45 +10,61 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      const scrollY = window.scrollY
+      setScrolled(scrollY > 20)
 
-      if (window.location.pathname === '/') {
-        const sections = ['work', 'about', 'contact']
-        let current = ''
-        
-        for (const section of sections) {
+      if (location.pathname !== '/') {
+        setActiveSection('')
+        return
+      }
+
+      // Near the very top = Home
+      if (scrollY < 100) {
+        setActiveSection('')
+        return
+      }
+
+      // Use viewport midpoint to determine current section
+      const midpoint = window.innerHeight / 2
+      const sections = ['contact', 'about', 'work']
+      let current = ''
+
+      for (const section of sections) {
+        const el = document.getElementById(section)
+        if (el) {
+          const rect = el.getBoundingClientRect()
+          if (rect.top <= midpoint && rect.bottom > midpoint) {
+            current = section
+            break
+          }
+        }
+      }
+
+      // Fallback: which section top is closest above midpoint
+      if (!current) {
+        let best = null
+        let bestDist = Infinity
+        for (const section of ['work', 'about', 'contact']) {
           const el = document.getElementById(section)
           if (el) {
             const rect = el.getBoundingClientRect()
-            if (rect.top <= 250 && rect.bottom >= 150) {
-              current = section
+            const dist = midpoint - rect.top
+            if (dist > 0 && dist < bestDist) {
+              bestDist = dist
+              best = section
             }
           }
         }
-        
-        setActiveSection(current)
-      } else {
-        setActiveSection('')
+        current = best || ''
       }
+
+      setActiveSection(current)
     }
 
     window.addEventListener('scroll', handleScroll)
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [location.pathname])
-
-  useEffect(() => {
-    if (location.pathname === '/') {
-      const hash = location.hash.replace('#', '')
-      if (hash) {
-        setActiveSection(hash)
-      } else if (window.scrollY < 100) {
-        setActiveSection('')
-      }
-    } else {
-      setActiveSection('')
-    }
-  }, [location])
 
   return (
     <motion.nav

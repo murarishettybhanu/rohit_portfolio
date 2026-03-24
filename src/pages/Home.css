@@ -6,13 +6,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 120px 20px 280px;
+    padding: 40px 20px 0;
     background: #08070f;
     overflow: hidden;
 }
 
 .hero-tagline-wrapper {
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 }
 
 .hero-tagline-badge {
@@ -41,7 +41,7 @@
     font-weight: 800;
     line-height: 1.1;
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     background: linear-gradient(90deg, #b383ff 5.5%, #8238f8 31.3%, #8238f8 48.6%, #8238f8 65.8%, #b383ff 91.7%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -55,13 +55,13 @@
     max-width: 489px;
     line-height: 1.6;
     text-align: center;
-    margin: 0 auto 48px;
+    margin: 0 auto 32px;
 }
 
 .hero-btns {
     display: flex;
     justify-content: center;
-    margin-bottom: 100px;
+    margin-bottom: 20px;
 }
 
 .btn-group {
@@ -107,16 +107,61 @@
 /* ======= TICKER SECTION ======= */
 .ticker-wrapper {
     position: absolute;
-    bottom: 80px;
-    left: -5%;
-    width: 110%;
-    height: 70px;
+    bottom: 20px;
+    left: -10vw;
+    width: 120vw;
+    height: 60px;
     background: #ffcd07;
-    transform: rotate(-8.19deg);
+    transform: rotate(-2deg);
     display: flex;
     align-items: center;
     overflow: hidden;
     z-index: 10;
+}
+
+.ticker-wrapper--bottom {
+    position: relative;
+    bottom: auto;
+    margin-top: 180px;
+    margin-bottom: 200px;
+    overflow: hidden;
+}
+
+/* ======= SCROLL INDICATOR ======= */
+.scroll-indicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    z-index: 5;
+}
+
+.scroll-mouse {
+    width: 24px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 14px;
+    position: relative;
+    opacity: 0.8;
+}
+
+.scroll-wheel {
+    width: 3px;
+    height: 8px;
+    background: #fff;
+    border-radius: 1.5px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll-dot 2s infinite;
+}
+
+@keyframes scroll-dot {
+    0% { transform: translate(-50%, 0); opacity: 0; }
+    20% { opacity: 1; }
+    80% { transform: translate(-50%, 10px); opacity: 0; }
+    100% { transform: translate(-50%, 10px); opacity: 0; }
 }
 
 .ticker-bar {
@@ -308,7 +353,7 @@
 
 /* ======= WORK SECTION ======= */
 .work-section {
-    padding: 100px 0;
+    padding: 0 0 0;
     background: #08070f;
 }
 
@@ -513,10 +558,13 @@
 
 .phone-mockup-img {
     width: 300px;
-    height: auto;
+    height: 580px;
+    object-fit: cover;
+    object-position: top;
     border-radius: 40px;
     box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-    border: 8px solid #222;
+    /* Removing redundant border as image already has a frame */
+    border: none;
 }
 
 .floating-notif {
@@ -573,6 +621,7 @@
 
 .cs-phone-mockup {
     width: 260px;
+    max-height: 580px; /* Added max-height */
     aspect-ratio: 9/19;
     background: var(--surface);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -835,165 +884,207 @@
 
 /* ======= ABOUT SECTION ======= */
 .about-section {
-    padding: 120px 0;
+    padding: 0 0 160px;
 }
 
-.about-grid {
+.about-header-grid {
     display: flex;
     justify-content: space-between;
     gap: 80px;
-    align-items: flex-start;
+    align-items: center;
+    margin-bottom: 60px;
 }
 
-.about-portrait {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+.about-portrait-col {
+    flex-shrink: 0;
+    width: 320px;
 }
 
 .portrait-wrapper {
     position: relative;
-    width: 304px;
-    height: 304px;
+    width: 320px;
 }
 
 .portrait-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+    height: auto;
+    object-fit: contain;
     position: relative;
     z-index: 1;
 }
 
 .portrait-glow {
     position: absolute;
-    bottom: -10%;
+    bottom: 10%;
     left: 10%;
     right: 10%;
     height: 60%;
     background: #9657fa;
     border-radius: 50%;
     filter: blur(60px);
-    opacity: 0.4;
+    opacity: 0.3;
+    z-index: 0;
 }
 
-.btn-resume {
+.btn-resume-overlay {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 12px 32px;
     background: #fff;
     color: #000;
-    border: 1px solid #e5e5e5;
+    border: none;
     border-radius: 40px;
     font-size: 14px;
     font-weight: 600;
+    z-index: 10;
+    white-space: nowrap;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.about-name {
-    font-size: 48px;
-    font-weight: 600;
-    margin-bottom: 8px;
+.about-info-col {
+    flex: 1;
 }
 
-.about-job-title {
+.about-name-large {
+    font-size: 56px;
+    font-weight: 300;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+.about-subtitle {
     font-size: 20px;
-    color: #bcbcbc;
-    display: block;
-    margin-bottom: 24px;
-}
-
-.about-socials {
+    color: #b282ff;
+    font-weight: 400;
+    margin-bottom: 20px;
     display: flex;
-    gap: 16px;
-    margin-bottom: 40px;
+    align-items: center;
+    gap: 12px;
 }
 
-.about-socials a {
-    width: 44px;
-    height: 44px;
-    background: #ffcd07; /* Matches Figma icons background */
-    color: #000;
+.subtitle-diamond {
+    font-size: 12px;
+}
+
+.about-divider {
+    height: 2px;
+    background: linear-gradient(90deg, #9657fa, rgba(150, 87, 250, 0.05));
+    margin-bottom: 28px;
+    border-radius: 2px;
+    width: 100%;
+    max-width: 440px;
+}
+
+.software-badges {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.software-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    font-size: 20px;
+    font-weight: 700;
+    font-size: 11px;
+    background: #fff;
+    color: #000;
 }
 
-.about-bio {
+.software-badge.badge-figma, .software-badge.badge-xd {
+    background: #ffcd07;
+}
+
+.badge-spacing {
+    width: 16px;
+    background: transparent;
+}
+
+.about-bio-text {
     font-size: 16px;
     color: #bcbcbc;
     line-height: 1.6;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+    max-width: 600px;
 }
 
-.about-motto {
-    background: rgba(150, 87, 250, 0.1);
-    border-left: 2px solid #9657fa;
-    padding: 24px;
-    display: flex;
-    gap: 16px;
-    border-radius: 0 16px 16px 0;
-    margin-bottom: 60px;
+.motto-box {
+    background: rgba(150, 87, 250, 0.15);
+    border-left: 4px solid #b282ff;
+    border-radius: 8px;
+    padding: 20px 24px;
+    max-width: 600px;
 }
 
-.motto-dot {
-    width: 8px;
-    height: 8px;
-    background: #9657fa;
-    border-radius: 50%;
-    margin-top: 8px;
-    flex-shrink: 0;
-}
-
-.about-motto p {
+.motto-box p {
     font-size: 15px;
-    color: #fff;
-    font-style: italic;
+    color: #d1b8ff;
     line-height: 1.5;
 }
 
-.skills-grid {
+.skills-grid-new {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    gap: 24px;
 }
 
-.skill-card {
-    display: flex;
-    gap: 20px;
-    background: #111;
+.skill-card-new {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
     padding: 32px;
-    border: 1px solid #222;
-    border-radius: 20px;
-    height: 260px;
+    display: flex;
+    flex-direction: column;
 }
 
-.skill-icon {
-    font-size: 24px;
-    color: #9657fa;
+.skill-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.skill-icon-badge {
+    width: 56px;
+    height: 56px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
 }
 
-.skill-info h4 {
-    font-size: 16px;
+.skill-card-header h4 {
+    font-size: 18px;
     font-weight: 700;
-    margin-bottom: 8px;
+    color: #fff;
 }
 
-.skill-info p {
-    font-size: 13px;
-    color: #737373;
-    line-height: 1.5;
+.skill-card-new p {
+    font-size: 14px;
+    color: #8c8c8c;
+    line-height: 1.6;
 }
 
 /* ======= PHILOSOPHY SECTION ======= */
 .philosophy-section {
-    padding: 120px 0;
+    padding: 160px 0;
     background: #08070f;
     text-align: center;
 }
 
+.hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px 80px;
+    position: relative;
+}
 .philosophy-content {
     max-width: 900px;
     margin: 0 auto;
@@ -1019,12 +1110,50 @@
     right: 0;
 }
 
+.philosophy-quote-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 40px;
+}
+
+.philosophy-quote-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.philosophy-plus {
+    font-size: 44px;
+    color: #fff;
+    margin-left: -12px;
+}
+
 .philosophy-quote {
-    font-size: 42px;
+    font-size: 46px;
     font-weight: 600;
-    line-height: 1.3;
-    color: #ba8fff;
+    line-height: 1.4;
     text-align: left;
+    margin-bottom: 0px;
+}
+
+.philosophy-line-1 {
+    color: #dfadff;
+}
+
+.philosophy-line-2 {
+    color: #b282ff;
+}
+
+.philosophy-line-3 {
+    color: #dfadff;
+}
+
+.quote-icon-wrapper {
+    align-self: flex-end;
+    margin-top: 20px;
 }
 
 /* ======= FINAL CTA SECTION ======= */
@@ -1113,63 +1242,202 @@
 
 /* ======= RESPONSIVE ======= */
 @media (max-width: 900px) {
-    .cs-card {
+    .section-title-large {
+        font-size: 48px;
+    }
+
+    .featured-cs-container {
+        flex-direction: column;
+        gap: 0;
+        align-items: stretch;
+    }
+
+    .cs-side-tabs {
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+        padding-top: 0;
+        padding-bottom: 24px;
+        margin-right: 0;
+        margin-bottom: -1px;
+        z-index: 2;
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+    }
+
+    .cs-side-tabs::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for Chrome/Safari/Webkit */
+    }
+
+    .side-tab {
+        writing-mode: horizontal-tb;
+        transform: none;
+        padding: 16px 24px;
+        border-radius: 16px 16px 0 0;
+        border-left: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: none;
+        white-space: nowrap;
+        flex-shrink: 0;
+        min-width: 120px;
+    }
+
+    .side-tab--active {
+        padding-top: 16px;
+        padding-bottom: 24px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .featured-cs-card {
+        padding: 40px 24px;
+        border-radius: 24px;
+    }
+
+    .cs-card-inner {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
-    .cs-card--reverse {
-        direction: ltr;
+    .cs-stats {
+        flex-direction: column;
+        gap: 24px;
     }
 
-    .cs-card-visual {
-        display: none;
+    .cs-logo-text {
+        font-size: 32px;
     }
 
-    .about-grid {
+    .cs-tagline {
+        font-size: 18px;
+        margin-bottom: 32px;
+    }
+
+    .cs-ps-label {
+        font-size: 20px;
+    }
+
+    .stat-value {
+        font-size: 36px;
+    }
+
+    /* Mockups scaling */
+    .phone-mockup-img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .other-work-item {
+        flex: 0 0 85vw;
+    }
+
+    .about-header-grid {
+        flex-direction: column;
+        gap: 60px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-info-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-divider {
+        margin: 0 auto 28px;
+    }
+
+    .motto-box {
+        text-align: left;
+    }
+
+    .skills-grid-new {
         grid-template-columns: 1fr;
-        gap: 48px;
     }
 
     .specialties {
-        gap: 8px;
+        flex-wrap: wrap;
+        gap: 12px;
     }
 }
 
 @media (max-width: 600px) {
     .hero-section {
-        padding: 100px 0 60px;
+        padding: 160px 0 100px;
     }
 
-    .hero-actions {
+    .hero-title-main {
+        font-size: clamp(40px, 10vw, 64px);
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-blob--1 {
+        left: -50px;
+        width: 400px;
+        height: 400px;
+    }
+
+    .hero-blob--2 {
+        right: -30px;
+        width: 300px;
+        height: 300px;
+    }
+
+    .btn-group {
         flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
     }
 
-    .about-stats {
-        gap: 24px;
+    .btn-case-studies, .btn-get-touch {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .ticker-wrapper {
+        bottom: 30px;
+    }
+
+    .ticker-content span {
+        font-size: 16px;
+    }
+
+    .philosophy-quote {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+
+    .quote-icon-large {
+        width: 100px;
+    }
+
+    .final-cta-title {
+        font-size: 48px;
+    }
+
+    .final-cta-sub {
+        font-size: 18px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .btn-email, .btn-linkedin-cta {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footer-bg-logo {
+        width: 200px;
     }
 }
-/* ======= TICKER REFINEMENT ======= */
-.ticker-wrapper--bottom {
-    position: relative;
-    bottom: auto;
-    margin-top: -40px;
-    margin-bottom: 80px;
-    transform: none;
-    z-index: 20;
-    background: #ffcd07;
-}
-
-/* ======= PHILOSOPHY REFINEMENT ======= */
-.philosophy-section {
-    padding: 180px 0;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-}
-
+/* Removed bottom duplications as they are now consolidated above */
 .philosophy-quote-wrapper {
-    max-width: 889px;
+    max-width: 900px;
     margin: 0;
     position: relative;
     z-index: 10;
@@ -1179,15 +1447,17 @@
 .philosophy-plus {
     font-size: 32px;
     color: #fff;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    opacity: 0.8;
 }
 
 .philosophy-quote {
-    font-size: 42px;
+    font-size: 46px;
     font-weight: 700;
-    line-height: 1.3;
-    color: #ba8fff;
-    margin-bottom: 60px;
+    line-height: 1.25;
+    color: #c7a4ff; /* More vibrant purple as requested */
+    margin-bottom: 40px;
+    letter-spacing: -0.01em;
 }
 
 .quote-icon-wrapper {

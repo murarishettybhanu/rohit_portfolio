@@ -7,11 +7,11 @@ export default function Footer() {
     return (
         <footer className="footer">
             <div className="container footer-inner">
-                <p className="footer-copy">© 2024 Rohit Kumar. All rights reserved.</p>
+                <p className="footer-copy">© 2024 Rohit Sri Kumar. All rights reserved.</p>
                 <div className="footer-links">
-                    <a href="#work" className="footer-link">Work</a>
-                    <a href="#about" className="footer-link">About</a>
-                    <a href="#contact" className="footer-link">Contact</a>
+                    <a href="/#work" className="footer-link">Work</a>
+                    <a href="/#about" className="footer-link">About</a>
+                    <a href="/#contact" className="footer-link">Contact</a>
                 </div>
                 <div className="footer-socials">
                     <a href="mailto:dk.rohitkumar@gmail.com" className="footer-social" title="Email">
